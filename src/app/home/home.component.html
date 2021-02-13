@@ -1,0 +1,72 @@
+<div></div>
+
+	<!-- Search -->
+	<mat-form-field>
+		<mat-label>Search</mat-label>
+	  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Ex. Indiranagar">
+	</mat-form-field>
+
+	<!-- Dropdown -->
+	<mat-form-field>
+		<mat-select placeholder="City" [(value)] = "val"  (selectionChange)="cityDropdown($event.value)">
+			<mat-option *ngFor="let cities of City" value = "{{cities.name}}">{{cities.name}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+    <div *ngIf="isLoading" class="spinner-container">
+        <mat-progress-spinner
+          color="primary" 
+          mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+
+  
+  <div class="example-container mat-elevation-z8">
+	<mat-table [dataSource]="dataSource" matSort>
+        
+		<ng-container matColumnDef="favorite">
+			<mat-header-cell *matHeaderCellDef mat-sort-header>Add to favorites</mat-header-cell>
+			<mat-cell *matCellDef="let element;">
+			  <mat-checkbox (click)="active(element)" (change)="active(element) ? selection.toggle(row) : null"
+				[checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+			  </mat-checkbox>
+			</mat-cell>
+		</ng-container>
+			  
+		<!-- IFSC Column -->
+		<ng-container matColumnDef="ifsc">
+			<mat-header-cell *matHeaderCellDef mat-sort-header> IFSC </mat-header-cell>
+			<mat-cell *matCellDef="let row"> {{row.ifsc}} </mat-cell>
+		</ng-container>
+  
+	  <!-- Address Column -->
+	  <ng-container matColumnDef="address">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+		<mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+	  </ng-container>
+  
+	  <!-- Name Column -->
+	  <ng-container matColumnDef="name">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+		<mat-cell *matCellDef="let row"> {{row.bank_name}} </mat-cell>
+	  </ng-container>
+  
+	  <!-- City Column -->
+	  <ng-container matColumnDef="city">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+		<mat-cell *matCellDef="let row"> {{row.city}} </mat-cell>
+	  </ng-container>
+  
+	  <!-- District Column -->
+	  <ng-container matColumnDef="district">
+		<mat-header-cell *matHeaderCellDef mat-sort-header> District </mat-header-cell>
+		<mat-cell *matCellDef="let row"> {{row.district}} </mat-cell>
+	  </ng-container>
+
+	  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
+	</mat-table>
+	<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
+

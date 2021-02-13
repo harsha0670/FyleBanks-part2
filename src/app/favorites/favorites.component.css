@@ -1,0 +1,8 @@
+table {
+    width: 100%;
+    table-layout:fixed;
+}
+  
+.mat-table, .mat-header-cell, .mat-cell {
+    padding: 6px;
+}
