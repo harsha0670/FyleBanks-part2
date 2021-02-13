@@ -1,4 +1,4 @@
-# Banks2
+# Banks
 
 A single page web app written in Angular that fetches and displays Indian Bank details.
 Features - Searching, Pagination, Add favourite banks.
