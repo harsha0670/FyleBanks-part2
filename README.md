@@ -3,6 +3,10 @@
 A single page web app written in Angular that fetches and displays Indian Bank details.
 Features - Searching, Pagination, Add favourite banks.
 
+**Hosted here**
+
+https://banks-angular.herokuapp.com/
+
 ## Setup
 
 Run `npm install` to install needed dependencies from `package.json`
